@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:buscalo/horarios.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -42,8 +41,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void _getCurrentLocation() async {
     myPosition = await mapcontroller.myLocation();
   }
-
-
 
   void createMarker() async {
     await mapcontroller.addMarker(
@@ -146,24 +143,11 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Icon(Icons.list_alt),
               label: 'Horarios',
               onTap: () async {
-                await showDialog(
-                    context: context,
-                    builder: (context) {
-                      return StatefulBuilder(builder: (context, setState) {
-                        return AlertDialog(
-                          content: const Text("hhhjghgjh"),
-                          title: Row(
-                            children: const [
-                              Icon(Icons.directions_bus, color: Colors.indigo),
-                              Text(
-                                ' Paradas',
-                                style: TextStyle(color: Colors.indigo),
-                              ),
-                            ],
-                          ),
-                        );
-                      });
-                    });
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const HorariosPage(),
+                  ),
+                );
               }),
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
